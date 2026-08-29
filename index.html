@@ -44,36 +44,42 @@
   <body>
     <main>
       <h1>ECRS Price Audit Privacy Policy</h1>
-      <p class="effective">Effective August 20, 2026</p>
+      <p class="effective">Effective August 20, 2026 · Last updated August 27, 2026</p>
 
       <div class="notice">
         ECRS Price Audit is an internal inventory-audit tool for authorized Metro Chef staff. It does not sell user data or use it for advertising.
       </div>
 
       <h2>Purpose</h2>
-      <p>ECRS Price Audit supports Metro Chef's internal inventory-audit process. Its single purpose is to record authorized ECRS inventory item-page visits, observed Base Price changes, and verification results, and to display the audit history for each item.</p>
+      <p>ECRS Price Audit supports Metro Chef's internal inventory-audit process. Its single purpose is to record authorized ECRS inventory item-page visits and saved changes to Base Price, Auto Discount, Item ID, Receipt Alias, item Name, and Memo so authorized staff can review who saw or changed an item.</p>
 
       <h2>Information handled</h2>
-      <p>The extension processes the signed-in ECRS account display name, item PK, Item ID, item name, Base Price values, Last Modified value, current ECRS item-page address, timestamps, computer name, extension version, event identifiers, and verification status.</p>
+      <p>The extension processes the signed-in ECRS account display name, item PK, Item ID, Receipt Alias, item Name, Memo, Pricing mode, Base Price and Auto Discount values, Last Modified value, current ECRS item-page address, timestamps, computer name, extension version, event identifiers, Save-group identifiers, and verification status. For saved Auto Discount, Item ID, Receipt Alias, item Name, and Memo changes, the audit record contains the old and new values.</p>
+      <p>Memo is recorded only on an existing-item page after an authorized user explicitly saves a real change, and each old or new Memo value is limited to 254 characters. A Memo reopen check records only matched, mismatched, or superseded status and never stores a third observed Memo value.</p>
+      <p>A save-confirmed record means the extension observed an explicit Save action through the page's Save control or the exact Alt+S shortcut; it is not independent proof of the ECRS server response. The audit record does not identify which of those two methods was used.</p>
+      <p>While auditing an ECRS item page, the extension checks keyboard events only to recognize the exact Alt+S shortcut. It does not retain or transmit general keyboard input, individual key values, the shortcut source, or keystroke history. Metro Chef business rules prohibit sensitive information in Memo, but the extension does not inspect or classify Memo content.</p>
       <p>A per-computer authentication token is stored in Chrome extension storage and sent over HTTPS to authenticate requests to the audit service. It is not included in audit-event records.</p>
-      <p>The extension does not read or store ECRS passwords, browser cookies, unrelated browsing activity, personal financial or payment information, health information, personal communications, precise location, or complete page HTML.</p>
+      <p>The extension does not read or store ECRS passwords, browser cookies, unrelated browsing activity, payment-card data, personal financial information, health information, personal communications, precise location, or complete page HTML.</p>
 
       <h2>Use and sharing</h2>
       <p>Audit data is used only to provide, maintain, and secure the internal ECRS audit feature. Records are sent over HTTPS to Metro Chef's secured audit service, which is hosted by Supabase as a service provider. The service and hosting provider may necessarily process standard connection metadata, such as an IP address, to deliver and secure requests.</p>
       <p>Metro Chef does not sell audit data, use it for advertising, use it to determine creditworthiness or for lending, or transfer it for purposes unrelated to the extension's single purpose. ECRS Price Audit's use and transfer of information complies with the Chrome Web Store User Data Policy, including its Limited Use requirements.</p>
 
       <h2>Local storage and security</h2>
-      <p>The extension stores its configuration, disclosure consent, per-computer authentication token, pending audit records, permanently failed records, queue-health statistics, and pending price confirmations in Chrome extension storage. Unsynchronized records remain locally until upload succeeds. Permanently rejected records remain locally until an authorized user retries them or exports and confirms their removal.</p>
+      <p>The extension stores its configuration and page-detection selectors, display preferences, per-computer authentication token, local disclosure choice, consent-migration provenance, disclosure-notice state, extension and update status, queued audit records, permanently rejected records, queue-health diagnostics, and pending verification candidates in Chrome extension storage.</p>
+      <p>Consent-migration provenance, notice state, and the dismissible estimate of a possible version 0.3.0 audit interruption are local-only and are not uploaded as audit events. Unsynchronized records, including full old and new Memo values for a qualifying change, remain locally until upload succeeds. Permanently rejected records remain locally until an authorized user retries them or exports and confirms their removal.</p>
+      <p>Up to 100 item-detail verification candidates and a separate 100 Memo verification candidates are kept locally for seven days. When either store remains full after expired and invalidated entries are removed, existing valid candidates are preserved, the new candidate is rejected, and a persistent warning is shown; the saved change event itself remains recorded. Device tokens, passwords, and browser cookies are not included in audit records.</p>
       <p>All audit-service communications use HTTPS. The extension does not download or execute remotely hosted code.</p>
 
       <h2>Choice and control</h2>
-      <p>Auditing remains disabled until the user accepts the extension's data disclosure and device setup is complete. Authorized users can inspect queue health, retry or export rejected records, and clear only the exact rejected-record revision that was exported.</p>
+      <p>Auditing remains disabled until the extension's data disclosure is accepted and device setup is complete. A structurally valid choice previously accepted in the same Chrome extension installation may be carried forward when its disclosure date is not newer than the current version and its audit-purpose family remains compatible. The original acceptance time is preserved; this is not recorded as a new manual acceptance.</p>
+      <p>Clearing the disclosure checkbox and saving disables auditing and prevents later automatic inheritance until an authorized user manually accepts it again. Authorized users can inspect queue health, retry or export rejected records, and clear only the exact rejected-record revision that was exported.</p>
 
       <h2>Retention and requests</h2>
       <p>Server retention, access, correction, and deletion are controlled by Metro Chef's approved internal audit policy and authorized administrators.</p>
       <p>For privacy questions or requests, email <a href="mailto:customer.service@metrochef.com">customer.service@metrochef.com</a> or use the <a href="https://metrochef.com/contact/">Metro Chef contact page</a>. Do not send passwords, device tokens, or other credentials in a support request.</p>
 
-      <footer>Published for the ECRS Price Audit Chrome extension.</footer>
+      <footer>Published for the ECRS Price Audit Chrome extension. Privacy notice revision 2026-08-27.</footer>
     </main>
   </body>
 </html>
